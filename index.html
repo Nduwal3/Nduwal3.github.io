@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niru Duwal</title>
+    <style>
+       
+        .main{
+            text-align: center;
+        }
+
+        .main  img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <p>loading...</p>
+    </div>
+    <div class="main"  id="mainContainer" hidden>
+        <img  class="profie_pic" src="" alt="" id="profilePic">
+        <h2 id="userName"></h2>
+        <h3 id="bio"></h3>
+        <h5 id="followers"></h5>
+        <p>
+            Check me out at <a href="" id="githubLink">Github</a>
+        </p>
+        <a class="twitter-timeline" data-width="300" data-height="400" 
+        href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">Tweets by NiruDuwal</a> 
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    
+    
+    <script>
+        fetch("https://api.github.com/users/nduwal3")
+        .then(response => response.json())
+        .then(response => populateDataIntoUIComponents(response))
+        .then (loadDataAfterFetchingData())
+
+        function populateDataIntoUIComponents(data){
+            console.log(data)
+            let followersCount = data['followers']
+            let followersDetail = `Followed By:  ${followersCount} people `
+            document.getElementById('profilePic').src = data.avatar_url
+            document.getElementById('userName').textContent = data.name
+            document.getElementById('bio').textContent = data['bio']
+            document.getElementById('followers').textContent =followersDetail
+            document.getElementById('githubLink').href = data.html_url
+        }
+
+        function loadDataAfterFetchingData(){
+            document.getElementById('mainContainer').hidden = false
+            document.getElementById('loading').hidden = true           
+        }
+
+    </script>
+</body>
+</html>
