@@ -4,56 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niru Duwal</title>
+    <link rel="icon" href="portfolio.png">
     <style>
-       
-        .main{
-            text-align: center;
+        body{
+            margin: 0px;
         }
 
-        .main  img{
-            width: 100px;
-            height: 100px;
+        .container{
+            max-width: 992px;
+            margin: 0 auto;
+            border: 2px gray;            
         }
+
+        .center {
+            margin: auto;
+            padding: 10px;
+        }
+
+        .main{
+            height: 350px;
+            max-width: 100%;
+            background: #8EE4AF;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center
+        }
+
+        .main div {
+            display: inline-block;
+        }
+
+        .profile{
+            vertical-align: middle;
+            margin: 0 auto;
+            width: 430px;
+        }
+
+        .main .profile_pic{
+            margin: auto;  
+        }
+
+        .main  .profile_pic img{
+            width: 120px;
+            height: 120px;
+            border-radius: 40px;
+            display: block;      
+        }
+
+        .main .profile_detail{
+            max-width: 500px;
+            padding: 0 30px;
+        }
+
+        .secondary_content{
+            width: 100%;
+            display: flex;
+        }
+
+        .secondary_content .twitter-section {
+            width: 30% !important;            
+        }
+        .secondary_content .twitter-section .twitter-timeline  {
+            float: left;
+            width: 100% !important;            
+        }
+
+        .secondary_content #right_column  {
+            float: left;
+            width: 70%;
+            box-sizing: border-box;
+        }
+
+        .secondary_content .project{
+            padding: 10px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+
+        .secondary_content .project:nth-of-type(even) {
+            background-color: #8EE4AF;
+            text-align: right;
+            border-radius: 30px 0px 0px 30px;
+        }
+
+        .secondary_content .project:nth-of-type(odd) {
+            background: #EDF5E1;
+            text-align: left;
+            border-radius: 0px 30px 30px 0px;
+        }
+
+        .footer{
+            /* width: 200px; */
+            background-color: #379683 ;
+        }
+
+
+        /* Small Devices, Tablets */
+        @media only screen and (max-width : 768px) {
+            .profile{           
+                text-align: center;
+            } 
+
+            .main .profile_pic{
+                display:block;
+            }
+
+            .main  .profile_pic img{
+                width: 120px;
+                height: 120px;
+                border-radius: 40px;
+                display: block; 
+                margin: 0 auto;     
+            }      
+
+            .secondary_content{
+                flex-direction: row;
+                flex-wrap: wrap;
+            } 
+
+            .secondary_content .project{
+                margin-left: 0;
+                word-wrap: break-word;
+            }
+
+            .secondary_content .twitter-section  {
+                float: none;
+                width: 100% !important;    
+                margin: 0 auto;
+                padding: 15px;
+            }
+
+            .secondary_content #right_column  {
+                float: none;
+                width: 90%;
+                margin: 0 auto;
+                width: 100%;
+                padding: 15px
+            }         
+        }
+       
+        /* Extra Small Devices, Phones */ 
+        @media only screen and (max-width : 480px) {            
+            .profile {
+            margin: 0 auto;
+            width: 80%;
+            display: block;
+            text-align: center;
+            } 
+
+            .main  .profile_pic img {
+                width: 40%;
+                height: 120px;
+                border-radius: 40px;
+                display: block; 
+                margin: 0 auto;     
+            }
+
+            .secondary_content .twitter-section #twitter-widget-0 {
+                float: none;
+                width: 100%;            
+            }
+
+            .secondary_content #right_column  {
+                    float: none;
+                    width: 100%;
+            }   
+        }
+
+        .clearfix{
+            clear: both;
+        }
+
     </style>
 </head>
 <body>
-    <div class="loading" id="loading">
-        <p>loading...</p>
-    </div>
-    <div class="main"  id="mainContainer" hidden>
-        <img  class="profie_pic" src="" alt="" id="profilePic">
-        <h2 id="userName"></h2>
-        <h3 id="bio"></h3>
-        <h5 id="followers"></h5>
-        <p>
-            Check me out at <a href="" id="githubLink">Github</a>
-        </p>
-        <a class="twitter-timeline" data-width="300" data-height="400" 
-        href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">Tweets by NiruDuwal</a> 
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
-    
-    
+    <code>
+        <div class="container">
+            <div class="loading" id="loading">
+                <p>loading...</p>
+            </div>
+            <div class=" main center"  id="main_container" hidden>
+               <div class="profile">
+                    <div class="profile_pic">
+                        <img  class="profie_pic" src="" alt="" id="profilePic">
+                    </div>
+                    <div class="profile_detail">
+                        <h2 id="userName"></h2>
+                        <h3 id="bio"></h3>
+                        <h5 id="followers"></h5>
+                        <p>
+                            Check me out at <a href="" target="_blank" id="githubLink">Github</a>
+                        </p>     
+                    </div>  
+               </div>         
+            </div>    
+           <div class="secondary_content" id="secondary_container" hidden>
+            <div class="twitter-section" id="left_column">
+                <a class="twitter-timeline" data-width="250" data-height="400" 
+                href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">My Tweets</a> 
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="project_list" id="right_column">
+                <h2>Projects</h2>
+            </div>
+            <fiv class="footer">
+
+            </fiv>
+            <div class="clearfix"></div>
+           </div>
+        </div>
+    </code>
     <script>
+        setTimeout(function(){
         fetch("https://api.github.com/users/nduwal3")
         .then(response => response.json())
         .then(response => populateDataIntoUIComponents(response))
-        .then (loadDataAfterFetchingData())
+        .then (HideLoaderandDisplayContent())
+        .then (getProjectData())}
+        ,2000);
 
         function populateDataIntoUIComponents(data){
             console.log(data)
             let followersCount = data['followers']
             let followersDetail = `Followed By:  ${followersCount} people `
+            let introText = `Hello! I am ${data['name']}`
             document.getElementById('profilePic').src = data.avatar_url
-            document.getElementById('userName').textContent = data.name
+            document.getElementById('userName').textContent = introText
             document.getElementById('bio').textContent = data['bio']
             document.getElementById('followers').textContent =followersDetail
             document.getElementById('githubLink').href = data.html_url
         }
 
-        function loadDataAfterFetchingData(){
-            document.getElementById('mainContainer').hidden = false
+        function HideLoaderandDisplayContent(){
+            document.getElementById('main_container').hidden = false
+            document.getElementById('secondary_container').hidden = false
             document.getElementById('loading').hidden = true           
+        }
+
+         function getProjectData(){
+             let parentDiv = document.getElementById('right_column')
+            try {
+                fetch('https://api.github.com/users/Nduwal3/repos')
+                .then(response => response.json())
+                .then(response => appendProjects(parentDiv, response))         
+            } catch (error) {
+                console.log(error)
+            }            
+        }
+
+        function createSingleProjectNode(singleProjectData){
+            console.log(singleProjectData)
+            let repoNode = document.createElement("div")
+            repoNode.className = 'project'
+            let project_name = document.createElement("h3")
+            project_name.textContent= singleProjectData["name"]
+            repoNode.appendChild(project_name)
+            let description = document.createElement("p")
+            description.innerText = singleProjectData["url"]
+            repoNode.appendChild(description)
+            let language = document.createElement('p')
+            language.innerText = singleProjectData['language']
+            repoNode.appendChild(language)
+            let gitUrl = document.createElement('p')
+            gitUrl.innerText = singleProjectData['git_url']
+            repoNode.appendChild(gitUrl)
+            return repoNode
+        }
+
+        function appendProjects( parent , AllRepoData){
+            AllRepoData.forEach(repoData => {
+                parent.appendChild(createSingleProjectNode(repoData))
+            }) 
         }
 
     </script>
