@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="portfolio, github portfolio">
     <title>Niru Duwal</title>
     <link rel="icon" href="portfolio.png">
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
         body{
             margin: 0px;
+            background-image: url(https://ak.picdn.net/shutterstock/videos/1022701639/thumb/1.jpg?ip=x480);
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         .container{
@@ -39,16 +44,16 @@
         .profile{
             vertical-align: middle;
             margin: 0 auto;
-            width: 430px;
+            width: 460px;
         }
 
         .main .profile_pic{
             margin: auto;  
         }
 
-        .main  .profile_pic img{
-            width: 120px;
-            height: 120px;
+        .main .profile_pic img{
+            width: 150px;
+            height: 150px;
             border-radius: 40px;
             display: block;      
         }
@@ -60,7 +65,7 @@
 
         .secondary_content{
             width: 100%;
-            display: flex;
+            display: flex;            
         }
 
         .secondary_content .twitter-section {
@@ -77,29 +82,50 @@
             box-sizing: border-box;
         }
 
+        .secondary_content #right_column h2{
+           text-align: center;
+           color: #379683;
+        }
+
         .secondary_content .project{
             padding: 10px;
             margin-bottom: 10px;
             margin-left: 10px;
         }
-
+        
         .secondary_content .project:nth-of-type(even) {
             background-color: #8EE4AF;
             text-align: right;
-            border-radius: 30px 0px 0px 30px;
+            border-radius: 50px 0px 0px 50px;
         }
 
         .secondary_content .project:nth-of-type(odd) {
             background: #EDF5E1;
             text-align: left;
-            border-radius: 0px 30px 30px 0px;
+            border-radius: 0px 50px 50px 0px;
         }
 
-        .footer{
-            /* width: 200px; */
+        footer{
+            width: 100%;
             background-color: #379683 ;
+            color: #edf5e1;
+            text-align: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
         }
 
+        footer .column{
+            float: left;
+            width: 50%;           
+        }
+
+        footer .column a{
+            color: #edf5e1;
+        }
+
+        footer .column a:hover{
+            color: #2e460a;
+        }
 
         /* Small Devices, Tablets */
         @media only screen and (max-width : 768px) {
@@ -142,16 +168,21 @@
                 margin: 0 auto;
                 width: 100%;
                 padding: 15px
-            }         
+            }
+            
+            footer .column{
+                float: none;
+                width: 100%;           
+            }     
         }
        
         /* Extra Small Devices, Phones */ 
         @media only screen and (max-width : 480px) {            
             .profile {
-            margin: 0 auto;
-            width: 80%;
-            display: block;
-            text-align: center;
+                margin: 0 auto;
+                width: 80%;
+                display: block;
+                text-align: center;
             } 
 
             .main  .profile_pic img {
@@ -168,27 +199,25 @@
             }
 
             .secondary_content #right_column  {
-                    float: none;
-                    width: 100%;
-            }   
+                float: none;
+                width: 100%;
+            }  
         }
 
         .clearfix{
             clear: both;
         }
-
     </style>
 </head>
-<body>
-    <code>
+<body onload="integrateDataOnUI()">
         <div class="container">
             <div class="loading" id="loading">
                 <p>loading...</p>
             </div>
-            <div class=" main center"  id="main_container" hidden>
+            <header class=" main center"  id="main_container" hidden>
                <div class="profile">
                     <div class="profile_pic">
-                        <img  class="profie_pic" src="" alt="" id="profilePic">
+                        <img  class="profie_pic" src="" alt="profile picture" id="profilePic">
                     </div>
                     <div class="profile_detail">
                         <h2 id="userName"></h2>
@@ -199,34 +228,51 @@
                         </p>     
                     </div>  
                </div>         
-            </div>    
-           <div class="secondary_content" id="secondary_container" hidden>
-            <div class="twitter-section" id="left_column">
-                <a class="twitter-timeline" data-width="250" data-height="400" 
-                href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">My Tweets</a> 
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-            <div class="project_list" id="right_column">
-                <h2>Projects</h2>
-            </div>
-            <fiv class="footer">
-
-            </fiv>
-            <div class="clearfix"></div>
-           </div>
-        </div>
-    </code>
+            </header>    
+            <section class="secondary_content" id="secondary_container" hidden>
+                <aside class="twitter-section" id="left_column">
+                    <a class="twitter-timeline" data-width="250" data-height="400" 
+                    href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">My Tweets</a> 
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </aside>
+                <div class="project_list" id="right_column">
+                    <h2>Projects</h2>
+                </div>          
+                <div class="clearfix"></div>
+            </section>
+            <footer class="footer">
+                <div class="contact">
+                    <div class="column">
+                        <h2>Get in touch</h2>
+                        <p>
+                         <a href="https://www.linkedin.com/in/niru-duwal-837a09120/" target="_blank">
+                             <i class="fa fa-linkedin-square" style="font-size:24px"></i>  LinkedIn </a>  
+                        </p>                  
+                        <p>
+                         <a href="" target="_blank" id="githubLink">
+                             <i class="fa fa-github" style="font-size:24px"></i>  Github</a>        
+                        </p>            
+                     </div>
+                     <div class="column">
+                         <h2>Contact</h2>
+                         <p><a href="tel:9779869419228"> <i class="fa fa-mobile-phone" style="font-size:24px"></i>  (+977)9869419228</p></a>
+                         <p><i class="fa fa-envelope" style="font-size:24px"></i>  duwalniru0@gmail.com</p>
+                     </div>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+    </div>
     <script>
-        setTimeout(function(){
-        fetch("https://api.github.com/users/nduwal3")
-        .then(response => response.json())
-        .then(response => populateDataIntoUIComponents(response))
-        .then (HideLoaderandDisplayContent())
-        .then (getProjectData())}
-        ,2000);
+
+        function integrateDataOnUI(){
+            fetch("https://api.github.com/users/nduwal3")
+            .then(response => response.json())
+            .then(response => populateDataIntoUIComponents(response))
+            .then (HideLoaderandDisplayContent())
+            .then (getProjectData())
+        }
 
         function populateDataIntoUIComponents(data){
-            console.log(data)
             let followersCount = data['followers']
             let followersDetail = `Followed By:  ${followersCount} people `
             let introText = `Hello! I am ${data['name']}`
@@ -255,7 +301,7 @@
         }
 
         function createSingleProjectNode(singleProjectData){
-            console.log(singleProjectData)
+            // console.log(singleProjectData)
             let repoNode = document.createElement("div")
             repoNode.className = 'project'
             let project_name = document.createElement("h3")
@@ -274,11 +320,13 @@
         }
 
         function appendProjects( parent , AllRepoData){
+            const allRepoData = document.createDocumentFragment();
             AllRepoData.forEach(repoData => {
-                parent.appendChild(createSingleProjectNode(repoData))
+                allRepoData.appendChild(createSingleProjectNode(repoData))
             }) 
+            parent.appendChild(allRepoData);
+            console.timeEnd()
         }
-
     </script>
 </body>
 </html>
