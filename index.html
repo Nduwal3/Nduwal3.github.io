@@ -10,15 +10,22 @@
     <style type="text/css">
         body{
             margin: 0px;
-            background-image: url(https://ak.picdn.net/shutterstock/videos/1022701639/thumb/1.jpg?ip=x480);
+            /* background-image: url(https://ak.picdn.net/shutterstock/videos/1022701639/thumb/1.jpg?ip=x480); */
+            /* background-image: url(https://previews.123rf.com/images/dmitr1ch/dmitr1ch1807/dmitr1ch180700016/104482833-worn-steel-sheet-background-light-metal-texture-with-scratches-and-dents.jpg); */
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyijtJByGEiD_IPkfqC4VtfLdM_x9vzz5uVlpf5zE38e5CTUUm&usqp=CAU);
             background-size: cover;
             background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .container{
             max-width: 992px;
             margin: 0 auto;
-            border: 2px gray;            
+            border: 2px gray; 
+            background-color: rgba(255, 255, 255, 0.6);   
+            padding-left: 15px;
+            padding-right: 15px;      
+            font-family: Arial, Helvetica, sans-serif;  
         }
 
         .center {
@@ -29,7 +36,7 @@
         .main{
             height: 350px;
             max-width: 100%;
-            background: #8EE4AF;
+            background-color: rgba(142,228,175,0.5);
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -44,7 +51,7 @@
         .profile{
             vertical-align: middle;
             margin: 0 auto;
-            width: 460px;
+            width: 500px;
         }
 
         .main .profile_pic{
@@ -61,6 +68,7 @@
         .main .profile_detail{
             max-width: 500px;
             padding: 0 30px;
+            opacity: 0.8;
         }
 
         .secondary_content{
@@ -90,7 +98,7 @@
         .secondary_content .project{
             padding: 10px;
             margin-bottom: 10px;
-            margin-left: 10px;
+            margin-left: 10px;            
         }
         
         .secondary_content .project:nth-of-type(even) {
@@ -99,16 +107,38 @@
             border-radius: 50px 0px 0px 50px;
         }
 
+        .secondary_content .project a {
+            font-weight: 200;
+            font-size: 1.3em;
+            text-decoration: none;
+            color:#2e460a;
+        }
+
+        .secondary_content .project a:hover{
+            color: #443f3d;
+        }
+
+        .secondary_content .project p {
+            font-size: small;
+        }
+
         .secondary_content .project:nth-of-type(odd) {
             background: #EDF5E1;
             text-align: left;
             border-radius: 0px 50px 50px 0px;
         }
 
+        .secondary_content .project:nth-of-type(odd) a:hover {
+            color:#8EE4AF ;
+        }
+
+        .secondary_content .project:nth-of-type(even) a:hover {
+            color:#EDF5E1 ;
+        }
+
         footer{
             width: 100%;
-            background-color: #379683 ;
-            color: #edf5e1;
+            background-color: #379683 ;           
             text-align: center;
             padding-top: 30px;
             padding-bottom: 30px;
@@ -116,15 +146,21 @@
 
         footer .column{
             float: left;
-            width: 50%;           
+            width: 50%; 
+            color: #edf5e1;          
         }
 
         footer .column a{
             color: #edf5e1;
+            text-decoration: none;
         }
 
         footer .column a:hover{
             color: #2e460a;
+        }
+
+        footer p{
+            font-size: small;
         }
 
         /* Small Devices, Tablets */
@@ -210,11 +246,11 @@
     </style>
 </head>
 <body onload="integrateDataOnUI()">
-        <div class="container">
-            <div class="loading" id="loading">
-                <p>loading...</p>
-            </div>
-            <header class=" main center"  id="main_container" hidden>
+        <div class="loading" id="loading">
+            <p>loading...</p>
+        </div>
+        <div class="container"  id="container" hidden>  
+            <header class=" main center"  id="main_container" >
                <div class="profile">
                     <div class="profile_pic">
                         <img  class="profie_pic" src="" alt="profile picture" id="profilePic">
@@ -229,7 +265,7 @@
                     </div>  
                </div>         
             </header>    
-            <section class="secondary_content" id="secondary_container" hidden>
+            <section class="secondary_content" id="secondary_container" >
                 <aside class="twitter-section" id="left_column">
                     <a class="twitter-timeline" data-width="250" data-height="400" 
                     href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">My Tweets</a> 
@@ -256,7 +292,7 @@
                      <div class="column">
                          <h2>Contact</h2>
                          <p><a href="tel:9779869419228"> <i class="fa fa-mobile-phone" style="font-size:24px"></i>  (+977)9869419228</p></a>
-                         <p><i class="fa fa-envelope" style="font-size:24px"></i>  duwalniru0@gmail.com</p>
+                         <p><i class="fa fa-envelope" style="font-size:16px"></i>  duwalniru0@gmail.com</p>
                      </div>
                 </div>
                 <div class="clearfix"></div>
@@ -267,12 +303,13 @@
         function integrateDataOnUI(){
             fetch("https://api.github.com/users/nduwal3")
             .then(response => response.json())
-            .then(response => populateDataIntoUIComponents(response))
-            .then (HideLoaderandDisplayContent())
+            .then(response => populateUserDataIntoUI(response))
             .then (getProjectData())
+            .then (HideLoaderandDisplayContent())
+            
         }
 
-        function populateDataIntoUIComponents(data){
+        function populateUserDataIntoUI(data){
             let followersCount = data['followers']
             let followersDetail = `Followed By:  ${followersCount} people `
             let introText = `Hello! I am ${data['name']}`
@@ -284,9 +321,9 @@
         }
 
         function HideLoaderandDisplayContent(){
-            document.getElementById('main_container').hidden = false
-            document.getElementById('secondary_container').hidden = false
+            document.getElementById('container').hidden = false
             document.getElementById('loading').hidden = true           
+                       
         }
 
          function getProjectData(){
@@ -300,33 +337,32 @@
             }            
         }
 
-        function createSingleProjectNode(singleProjectData){
-            // console.log(singleProjectData)
-            let repoNode = document.createElement("div")
-            repoNode.className = 'project'
-            let project_name = document.createElement("h3")
-            project_name.textContent= singleProjectData["name"]
-            repoNode.appendChild(project_name)
-            let description = document.createElement("p")
-            description.innerText = singleProjectData["url"]
-            repoNode.appendChild(description)
-            let language = document.createElement('p')
-            language.innerText = singleProjectData['language']
-            repoNode.appendChild(language)
-            let gitUrl = document.createElement('p')
-            gitUrl.innerText = singleProjectData['git_url']
-            repoNode.appendChild(gitUrl)
-            return repoNode
-        }
-
         function appendProjects( parent , AllRepoData){
             const allRepoData = document.createDocumentFragment();
             AllRepoData.forEach(repoData => {
                 allRepoData.appendChild(createSingleProjectNode(repoData))
             }) 
             parent.appendChild(allRepoData);
-            console.timeEnd()
         }
+
+        function createSingleProjectNode(singleProjectData){
+            let repoNode = document.createElement("div")
+            repoNode.className = 'project'
+            let project_name = document.createElement("a")
+            project_name.textContent= singleProjectData["name"]
+            project_name.href = singleProjectData['html_url']
+            project_name.target = '_blank'
+            repoNode.appendChild(project_name)
+            let description = document.createElement("p")
+            description.innerText = singleProjectData["description"]
+            repoNode.appendChild(description)
+            let language = document.createElement('p')
+            language.innerText = "language:: " + singleProjectData['language']
+            repoNode.appendChild(language)
+            repoNode.appendChild(gitUrl)
+            return repoNode
+        }
+        
     </script>
 </body>
 </html>
