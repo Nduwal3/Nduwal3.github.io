@@ -10,12 +10,15 @@
     <style type="text/css">
         body{
             margin: 0px;
-            /* background-image: url(https://ak.picdn.net/shutterstock/videos/1022701639/thumb/1.jpg?ip=x480); */
-            /* background-image: url(https://previews.123rf.com/images/dmitr1ch/dmitr1ch1807/dmitr1ch180700016/104482833-worn-steel-sheet-background-light-metal-texture-with-scratches-and-dents.jpg); */
             background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyijtJByGEiD_IPkfqC4VtfLdM_x9vzz5uVlpf5zE38e5CTUUm&usqp=CAU);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+        }
+
+        .loading{
+            font-size: x-large;
+            text-align: center;
         }
 
         .container{
@@ -71,17 +74,29 @@
             opacity: 0.8;
         }
 
+        .main .profile_detail a{
+            text-decoration: none;
+            color: black;            
+        }
+
+        .main .profile_detail a:hover{
+            color: #379683 ;
+        }
+
         .secondary_content{
             width: 100%;
-            display: flex;            
+            display: flex; 
+            flex-direction: row;           
         }
 
         .secondary_content .twitter-section {
-            width: 30% !important;            
+            width: 30% !important;   
+            margin-top: 25px;         
         }
+        
         .secondary_content .twitter-section .twitter-timeline  {
             float: left;
-            width: 100% !important;            
+            width: 100% !important;        
         }
 
         .secondary_content #right_column  {
@@ -231,7 +246,7 @@
 
             .secondary_content .twitter-section #twitter-widget-0 {
                 float: none;
-                width: 100%;            
+                width: 100%;         
             }
 
             .secondary_content #right_column  {
@@ -246,67 +261,66 @@
     </style>
 </head>
 <body onload="integrateDataOnUI()">
-        <div class="loading" id="loading">
-            <p>loading...</p>
-        </div>
-        <div class="container"  id="container" hidden>  
-            <header class=" main center"  id="main_container" >
-               <div class="profile">
-                    <div class="profile_pic">
-                        <img  class="profie_pic" src="" alt="profile picture" id="profilePic">
-                    </div>
-                    <div class="profile_detail">
-                        <h2 id="userName"></h2>
-                        <h3 id="bio"></h3>
-                        <h5 id="followers"></h5>
-                        <p>
-                            Check me out at <a href="" target="_blank" id="githubLink">Github</a>
-                        </p>     
-                    </div>  
-               </div>         
-            </header>    
-            <section class="secondary_content" id="secondary_container" >
-                <aside class="twitter-section" id="left_column">
-                    <a class="twitter-timeline" data-width="250" data-height="400" 
-                    href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">My Tweets</a> 
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </aside>
-                <div class="project_list" id="right_column">
-                    <h2>Projects</h2>
-                </div>          
-                <div class="clearfix"></div>
-            </section>
-            <footer class="footer">
-                <div class="contact">
-                    <div class="column">
-                        <h2>Get in touch</h2>
-                        <p>
-                         <a href="https://www.linkedin.com/in/niru-duwal-837a09120/" target="_blank">
-                             <i class="fa fa-linkedin-square" style="font-size:24px"></i>  LinkedIn </a>  
-                        </p>                  
-                        <p>
-                         <a href="" target="_blank" id="githubLink">
-                             <i class="fa fa-github" style="font-size:24px"></i>  Github</a>        
-                        </p>            
-                     </div>
-                     <div class="column">
-                         <h2>Contact</h2>
-                         <p><a href="tel:9779869419228"> <i class="fa fa-mobile-phone" style="font-size:24px"></i>  (+977)9869419228</p></a>
-                         <p><i class="fa fa-envelope" style="font-size:16px"></i>  duwalniru0@gmail.com</p>
-                     </div>
-                </div>
-                <div class="clearfix"></div>
-            </footer>
+    <div class="loading" id="loading">
+        <p>loading...</p>
     </div>
-    <script>
+    <div class="container"  id="container" hidden>  
+        <header class=" main center"  id="main_container" >
+           <div class="profile">
+                <div class="profile_pic">
+                    <img  class="profie_pic" src="" alt="profile picture" id="profilePic">
+                </div>
+                <div class="profile_detail">
+                    <h2 id="userName"></h2>
+                    <h3 id="bio"></h3>
+                    <h5 id="followers"></h5>
+                    <h5>
+                        Check me out at <a href="" target="_blank" id="githubLink">Github</a>
+                    </h5>     
+                </div>  
+           </div>         
+        </header>    
+        <section class="secondary_content" id="secondary_container" >
+            <aside class="twitter-section" id="left_column">
+                <a class="twitter-timeline" data-width="250" data-height="400" 
+                href="https://twitter.com/NiruDuwal?ref_src=twsrc%5Etfw">My Tweets</a> 
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </aside>
+            <div class="project_list" id="right_column">
+                <h2>Projects</h2>
+            </div>          
+            <div class="clearfix"></div>
+        </section>
+        <footer class="footer">
+            <div class="contact">
+                <div class="column">
+                    <h2>Get in touch</h2>
+                    <p>
+                     <a href="https://www.linkedin.com/in/niru-duwal-837a09120/" target="_blank">
+                         <i class="fa fa-linkedin-square" style="font-size:24px"></i>  LinkedIn </a>  
+                    </p>                  
+                    <p>
+                     <a href="" target="_blank" id="githubLink">
+                         <i class="fa fa-github" style="font-size:24px"></i>  Github</a>        
+                    </p>            
+                 </div>
+                 <div class="column">
+                     <h2>Contact</h2>
+                     <p><a href="tel:9779869419228"> <i class="fa fa-mobile-phone" style="font-size:24px"></i>  (+977)9869419228</p></a>
+                     <p><i class="fa fa-envelope" style="font-size:16px"></i>  duwalniru0@gmail.com</p>
+                 </div>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+    </div>
 
+    <script>
         function integrateDataOnUI(){
             fetch("https://api.github.com/users/nduwal3")
             .then(response => response.json())
             .then(response => populateUserDataIntoUI(response))
             .then (getProjectData())
-            .then (HideLoaderandDisplayContent())
-            
+            .then (HideLoaderandDisplayContent())            
         }
 
         function populateUserDataIntoUI(data){
@@ -322,7 +336,7 @@
 
         function HideLoaderandDisplayContent(){
             document.getElementById('container').hidden = false
-            document.getElementById('loading').hidden = true           
+            document.getElementById('loading').hidden = true      
                        
         }
 
