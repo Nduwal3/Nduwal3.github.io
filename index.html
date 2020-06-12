@@ -341,14 +341,13 @@
         }
 
          function getProjectData(){
-             let parentDiv = document.getElementById('right_column')
-            try {
-                fetch('https://api.github.com/users/Nduwal3/repos')
-                .then(response => response.json())
-                .then(response => appendProjects(parentDiv, response))         
-            } catch (error) {
-                console.log(error)
-            }            
+            let parentDiv = document.getElementById('right_column')
+            fetch('https://api.github.com/users/Nduwal3/repos')
+            .then(response => response.json())
+            .then(response => appendProjects(parentDiv, response))         
+            .catch (error => {
+            console.log(error)
+            });          
         }
 
         function appendProjects( parent , AllRepoData){
