@@ -316,11 +316,16 @@
 
     <script>
         function integrateDataOnUI(){
+            let parentDiv = document.getElementById('right_column')
             fetch("https://api.github.com/users/nduwal3")
             .then(response => response.json())
             .then(response => populateUserDataIntoUI(response))
-            .then (getProjectData())
-            .then (HideLoaderandDisplayContent())            
+            .then(response => getProjectData())
+            .then(response => appendProjects(parentDiv, response)) 
+            .then(HideLoaderandDisplayContent()) 
+            .catch(error => {
+                console.log(error)
+            })           
         }
 
         function populateUserDataIntoUI(data){
@@ -340,14 +345,9 @@
                        
         }
 
-         function getProjectData(){
-            let parentDiv = document.getElementById('right_column')
-            fetch('https://api.github.com/users/Nduwal3/repos')
-            .then(response => response.json())
-            .then(response => appendProjects(parentDiv, response))         
-            .catch (error => {
-            console.log(error)
-            });          
+         function getProjectData(){           
+            return fetch('https://api.github.com/users/Nduwal3/repos')
+            .then(response => response.json())              
         }
 
         function appendProjects( parent , AllRepoData){
